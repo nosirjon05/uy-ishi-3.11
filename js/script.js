@@ -1,35 +1,70 @@
-var elForm = document.querySelector(".site-form");
-var elInput = elForm.querySelector(".site-input");
+let elForm = document.querySelector(".site-form");
+let elInput = elForm.querySelector(".site-input");
 
-var day = ("")
-var mondey = ("dushanba");
-var tuesday = ("seshanba");
-var Wednesday = ("chorshanba");
-var Thursday = ("payshanba");
-var friday = ("juma");
-var Saturday = ("shanba");
-var Sunday = ("yakshanba");
+let elminus = document.querySelector(".minus");
+let elfoot = document.querySelector(".foot");
+let elvelosiped = document.querySelector(".velosiped");
+let elcar = document.querySelector(".car");
+let eltrain = document.querySelector(".train");
 
-var elp = document.querySelector(".text");
+let foots = 4;
+let velosiped = 8;
+let car = 35;
+let train = 100;
+
 
 elForm.addEventListener("submit", function(evt) {
    evt.preventDefault();
-
-   if (elInput.value == day) {
-    document.querySelector.textContent = "hafta kunini kiriting";
-   } else if  (elInput.value == mondey) {
-    elp.textContent = "понедельник";
-   } else if  (elInput.value == tuesday) {
-    elp.textContent = "вторник";
-   } else if  (elInput.value == Wednesday) {
-    elp.textContent = "среда";
-   } else if  (elInput.value == Thursday) {
-    elp.textContent = "четверг";
-   } else if  (elInput.value == friday) {
-    elp.textContent = "пятница";
-   } else if  (elInput.value == Saturday) {
-    elp.textContent = "суббота";
-   } else if  (elInput.value == Sunday) {
-    elp.textContent = "воскресенье";
+   if (elInput.value <= 0) {
+      elvelosiped.textContent = "Manfiy son kiritmang";
+      elfoot.textContent = "Manfiy son kiritmang";
+      elcar.textContent = "Manfiy son kiritmang";
+      eltrain.textContent = "Manfiy son kiritmang";
+   } else {
+      var foot = Math.floor(elInput.value / foots);
+      var peopleMin = Math.floor((elInput.value / foots - foot)*60);
+   
+      var bike = Math.floor(elInput.value / velosiped);
+      var bikeMin = Math.floor((elInput.value / velosiped - bike)*60);
+   
+      var cars = Math.floor(elInput.value / car);
+      var carsMin = Math.floor((elInput.value / car - cars)*60);
+   
+      var trainspeed = Math.floor(elInput.value / train);
+      var trainspeedMin = Math.floor((elInput.value / train - trainspeed)*60);
+   
+      elfoot.textContent = `On foot ${foot} hour ${peopleMin} min`;
+      elvelosiped.textContent = `bike  ${bike} hour ${bikeMin} min`;
+      elcar.textContent = `car ${cars} hour ${carsMin} min`;
+      eltrain.textContent = `train ${trainspeed} hour ${trainspeedMin} min`;
    }
 });
+
+
+      // running======================================================================================================================================================================
+
+
+      let elrunningForm = document.querySelector(".running-form");
+      let elrunningInput = elrunningForm.querySelector(".running-input");
+      let elcheckboxInput = elrunningForm.querySelector(".checkbox-input");
+
+      let elResult = document.querySelector(".result");
+
+      let mingradus = 4;
+      let maxgradus = 40;
+
+      elrunningForm.addEventListener("submit", function(evt) {
+         evt.preventDefault();
+         
+         let checked = elcheckboxInput.checked;
+
+            if (elrunningInput.value < mingradus || checked) {
+               elResult.textContent = "yugurishingizga maslahat bermaymiz";
+           } else if (elrunningInput.value > maxgradus || checked) {
+               elResult.textContent = "yugurishingizga maslahat bermaymiz";
+           } else {
+               elResult.textContent = "yugurishingiz mumkin";
+           } 
+      });
+
+         // gradus====================================================================================================================================================================
