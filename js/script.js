@@ -68,3 +68,28 @@ elForm.addEventListener("submit", function(evt) {
       });
 
          // gradus====================================================================================================================================================================
+
+         let elgradusForm = document.querySelector(".gradus-form")
+         let elgradusInput = document.querySelector(".gradus-input")
+         let elselect = document.querySelector(".select")
+         let elresultGradus = document.querySelector(".result-gradus")
+         let elgradusText = document.querySelector(".gradus-text")
+
+         elgradusForm.addEventListener('submit', function (event){
+            event.preventDefault();
+
+            let elInputVall = parseInt(elgradusInput.value);
+            
+            if (elselect.value == "celsius") {
+               elresultGradus.textContent = Math.round((elInputVall * 9/5) + 32) + "°F";
+               elgradusText.textContent = Math.round(elInputVall + 273) + "K";
+             }
+             if (elselect.value == "Fahrenheit") {
+               elresultGradus.textContent = Math.round((elInputVall - 32) * 5/9 ) + "°C";
+               elgradusText.textContent = Math.round((elInputVall - 32) * 5/9 + 273,15) + "K";
+             }
+             if (elselect.value == "kelvin") {
+               elresultGradus.textContent = Math.round((elInputVall - 273,15) * 9/5 + 32) + "°F";
+               elgradusText.textContent =  Math.round(elInputVall - 273,15) + "C";
+             }
+         })
